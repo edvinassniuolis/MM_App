@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using OrderInterfaces;
 
 namespace OrderService
 {
@@ -9,5 +10,8 @@ namespace OrderService
     {
         [OperationContract]
         List<string> ListOrders();
+
+        [OperationContract]
+        OrderData GetOrder(int id);
     }
 }

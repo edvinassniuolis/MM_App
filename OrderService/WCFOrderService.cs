@@ -1,4 +1,5 @@
 ﻿using Log;
+using OrderInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,5 +32,31 @@ namespace OrderService
                 throw;
             }
         }
+
+        public OrderData GetOrder(int id)
+        {
+            try
+            {
+                OrderData order = null;
+                using (var database = new MMDatabaseEntities())
+                {
+                    var matchOrder = database.Orders.First((o) => o.OrderId == id);
+
+                    order = new OrderData();
+                    order.Id = matchOrder.OrderId;
+                    order.CustomerName = matchOrder.CustomerName;
+                    order.Product = matchOrder.Product;
+                    order.Quantity = matchOrder.Quantity;
+
+                }
+                return order;
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.Message);
+                throw;
+            }
+        }
+
     }
 }

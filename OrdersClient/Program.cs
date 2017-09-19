@@ -12,12 +12,14 @@ namespace OrdersClient
 
             IWCFOrderService proxy = channelFactory.CreateChannel();
 
-            //calls the server
             var products = proxy.ListOrders();
             foreach (var i in products)
             {
                 Console.WriteLine(i);
             }
+
+            //calls the server
+
             Console.ReadLine();
 
         }
