@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrderService
+﻿namespace OrderService
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var host = new Host(typeof(WCFOrderService));
+            host.Open();
         }
+
+
     }
 }
